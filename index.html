@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hokee - Cherokee Medicine Man</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include the Twitch Embed script -->
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+</head>
+<body>
+
+    <header>
+        <!-- Navigation menu -->
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#donations">Donations</a></li>
+                <li><a href="#socials">Socials</a></li>
+                <li><a href="#livestream">Live Stream</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Livestream section -->
+    <section id="livestream">
+        <h2>Live Stream</h2>
+        <div id="twitch-embed"></div>
+    </section>
+
+    <!-- Initialize the Twitch player -->
+    <script type="text/javascript">
+        new Twitch.Player("twitch-embed", {
+            channel: "hokeeshadowwalker",
+            width: "854",
+            height: "480",
+            parent: ["localhost"]
+        });
+    </script>
+
+    <!-- About Hokee Section -->
+    <section id="about">
+        <h2>Hokee Shadowwalker</h2>
+        <div class="center-image">
+            <img src="hokeehead.png" alt="Hokee Head Image" class="hokee-head">
+        </div>
+        <h2>About Hokee</h2>
+        <p>Hok'ee Shadowwalker, born on April 17th, 1892, is a man shaped by hardship, resilience...</p>
+    </section>
+
+    <!-- Stream Schedule -->
+    <section id="schedule">
+        <h2>Stream Schedule</h2>
+        <ul>
+            <li>Monday: 6 PM - 9 PM</li>
+            <li>Wednesday: 6 PM - 9 PM</li>
+            <li>Friday: 6 PM - 9 PM</li>
+            <li>Saturday: 12 PM - 4 PM</li>
+        </ul>
+    </section>
+
+    <!-- Donations Section -->
+    <section id="donations">
+        <h2>Support the Stream</h2>
+        <a href="https://yourdonationlink.com">
+            <img src="donations_button.png" alt="Donations Button">
+        </a>
+    </section>
+
+    <!-- Socials Section -->
+    <section id="socials">
+        <h2>Connect with Hokee</h2>
+        <ul class="socials">
+            <a href="https://discordapp.com/users/141384806280724480"><img src="discord.png" alt="Discord"></a>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hokee - Cherokee Medicine Man. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

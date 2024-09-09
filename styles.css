@@ -1,0 +1,109 @@
+/* General body styling */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f4f1e0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header section with full-width background banner */
+header {
+    background-image: url('banner.png'); /* Your banner image */
+    background-size: cover; /* Makes the image fill the full width */
+    background-position: center center; /* Ensures the image is centered */
+    background-repeat: no-repeat; /* No repeat of the image */
+    width: 100vw; /* Full width of the viewport */
+    height: 60vh; /* Adjust this to control how much of the image shows */
+    min-height: 400px; /* Sets a minimum height to ensure good visibility */
+}
+
+/* Navigation styling */
+nav {
+    background-color: rgba(93, 64, 55, 0.85); /* Slight transparency */
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ff7043;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Centered image above 'About Hokee' */
+.center-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hokee-head {
+    width: 104px;
+    height: 136px;
+}
+
+/* Section styling */
+section {
+    padding: 50px;
+    text-align: center;
+    background-color: #f7f2e9;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+}
+
+section h2 {
+    font-size: 2em;
+    color: #5d4037;
+    margin-bottom: 20px;
+}
+
+/* Socials section */
+.socials ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.socials ul li {
+    margin: 10px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #5d4037;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Button styling for Donations, Discord, YouTube, etc. */
+img {
+    max-width: 150px;
+    margin: 10px;
+}
+
+/* Twitch Embed Player Styling */
+#twitch-embed {
+    margin: 20px auto;
+    text-align: center;
+}
