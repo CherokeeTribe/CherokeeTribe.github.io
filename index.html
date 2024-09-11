@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
+    <!-- Importing Google Font for Native-Themed Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -12,10 +14,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Atma', sans-serif; /* Use the custom font */
             background-color: #000;
+            color: #fff;
             overflow: hidden;
-            color: white; /* Ensure all text is visible */
+        }
+
+        /* Native style theming */
+        .native-text {
+            font-family: 'Atma', sans-serif;
+            font-size: 20px;
+            color: #ffebcd; /* Light beige/gold */
+            letter-spacing: 1px;
         }
 
         .home-screen {
@@ -44,56 +54,26 @@
 
         .game-title {
             font-size: 48px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             margin-bottom: 20px;
-        }
-
-        .loading-bar {
-            width: 60%;
-            height: 15px;
-            background-color: #333;
-            border-radius: 10px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        .loading-fill {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 0%;
-            transition: width 2s ease-in-out;
+            font-family: 'Atma', sans-serif; /* Applying Native-themed font */
         }
 
         .menu-buttons button {
             margin: 10px;
             padding: 15px 30px;
-            background-color: #007bff;
+            background-color: #8b4513; /* Native-themed brown */
             border: none;
             border-radius: 8px;
             color: white;
             font-size: 20px;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-family: 'Atma', sans-serif; /* Applying font */
         }
 
         .menu-buttons button:hover {
-            background-color: #0056b3;
-        }
-
-        .menu-buttons {
-            display: flex;
-            flex-direction: column;
-            margin-top: 30px;
-        }
-
-        .settings-menu {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
+            background-color: #a0522d;
         }
 
         /* Game screen */
@@ -106,15 +86,6 @@
             text-align: center;
         }
 
-        .fade-in {
-            animation: fadeIn 3s ease;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
         /* Interaction interface */
         .game-interface {
             display: none;
@@ -122,12 +93,13 @@
             justify-content: center;
             align-items: center;
             color: white;
+            font-family: 'Atma', sans-serif; /* Native-themed font */
         }
 
         .choice-button {
             padding: 10px 20px;
             margin: 10px;
-            background-color: #007bff;
+            background-color: #8b4513; /* Native-themed brown */
             border: none;
             border-radius: 5px;
             color: white;
@@ -135,27 +107,7 @@
         }
 
         .choice-button:hover {
-            background-color: #0056b3;
-        }
-
-        .story-page, .npc-interface, .quest-page {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        /* Ensure new background for sections */
-        .page-background {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            color: #333;
-        }
-
-        h2 {
-            font-family: 'Arial', sans-serif;
+            background-color: #a0522d;
         }
     </style>
 </head>
@@ -166,67 +118,36 @@
 <div class="overlay fade-in">
     <div class="game-title">Echoes of the Cherokee Nation</div>
 
-    <div class="loading-bar">
-        <div class="loading-fill" id="loadingFill"></div>
-    </div>
-
     <div class="menu-buttons">
-        <button onclick="startGame()">Travel to the Tribal Grounds</button>
+        <button onclick="startGame()">Start Game</button>
         <button onclick="toggleSettings()">Settings</button>
         <button onclick="showCredits()">Credits</button>
-    </div>
-
-    <div class="settings-menu" id="settingsMenu">
-        <h2>Settings</h2>
-        <label>
-            <input type="checkbox" id="musicToggle" checked onchange="toggleMusic()"> Background Music
-        </label>
-        <button onclick="closeSettings()">Close</button>
     </div>
 </div>
 
 <!-- Game screen that will be displayed after start -->
 <div class="game-screen" id="gameScreen">
-    <h1>Welcome to the World of the Cherokee Nation!</h1>
-    <p>The adventure begins...</p>
-    <button class="choice-button" onclick="beginJourney()">Begin Your Journey</button>
+    <h1 class="native-text">Welcome to the World of the Cherokee Nation!</h1>
+    <p class="native-text">The adventure begins...</p>
+    <button class="choice-button" onclick="startQuest()">Travel to the Tribal Grounds</button>
 </div>
 
 <!-- Interaction interface -->
 <div class="game-interface" id="gameInterface">
-    <h2>You meet the tribe elders...</h2>
-    <p>What will you do?</p>
-    <button class="choice-button" onclick="loadWisdom()">Ask for Wisdom</button>
-    <button class="choice-button" onclick="loadQuest()">Seek a Quest</button>
-    <button class="choice-button" onclick="loadStory()">Ask for a Story</button>
+    <h2 class="native-text">You meet the tribe elders...</h2>
+    <p class="native-text">What will you do?</p>
+    <button class="choice-button" onclick="chooseAction('ask for wisdom')">Ask for Wisdom</button>
+    <button class="choice-button" onclick="chooseAction('seek a quest')">Seek a Quest</button>
+    <button class="choice-button" onclick="chooseAction('ask for a story')">Ask for a Story</button>
 </div>
 
-<div class="npc-interface page-background" id="npcInterface"></div>
-
-<div class="story-page page-background" id="storyPage"></div>
-
-<div class="quest-page page-background" id="questPage"></div>
-
-<!-- Using local file path for background music -->
+<!-- Audio -->
 <audio id="bgMusic" loop>
-    <source src="hymn.mp3" type="audio/mpeg">
+    <source src="https://audio.jukehost.co.uk/N3CuGZj51wOhuQVb43EDFXfesEwaLOdu" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
 <script>
-    // Loading bar effect
-    function fillLoadingBar() {
-        const loadingFill = document.getElementById('loadingFill');
-        loadingFill.style.width = '100%';
-    }
-
-    window.onload = function() {
-        setTimeout(fillLoadingBar, 1000);
-        document.querySelector(".menu-buttons button").addEventListener("click", () => {
-            playMusic();
-        });
-    };
-
     // Function to play background music
     function playMusic() {
         const bgMusic = document.getElementById('bgMusic');
@@ -237,124 +158,32 @@
 
     // Button functions
     function startGame() {
-        // Hide the home screen and show the game screen
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.home-screen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'flex';
-    }
-
-    function showCredits() {
-        alert('Showing credits...');
+        playMusic();
     }
 
     function toggleSettings() {
-        const settingsMenu = document.getElementById('settingsMenu');
-        settingsMenu.style.display = settingsMenu.style.display === 'flex' ? 'none' : 'flex';
+        alert('Settings are currently under development.');
     }
 
-    function closeSettings() {
-        document.getElementById('settingsMenu').style.display = 'none';
+    function showCredits() {
+        alert('Developed by the tribe members.');
     }
 
-    // Toggle music
-    function toggleMusic() {
-        const bgMusic = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        if (musicToggle.checked) {
-            bgMusic.play();
-        } else {
-            bgMusic.pause();
-        }
-    }
-
-    // Go to tribal grounds
-    function beginJourney() {
+    function startQuest() {
         document.getElementById('gameScreen').style.display = 'none';
         document.getElementById('gameInterface').style.display = 'flex';
     }
 
-    // Fetch tribe data from JSON
-    async function fetchTribeData() {
-        try {
-            const response = await fetch('Cherokee_Tribe_Game_Data.json');
-            const tribeData = await response.json();
-            return tribeData;
-        } catch (error) {
-            alert('There was an issue loading the tribe data: ' + error);
-        }
-    }
-
-    // Load wisdom (random stories, culture, clans)
-    async function loadWisdom() {
-        const tribeData = await fetchTribeData();
-        if (tribeData) {
-            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
-            const randomCultureKey = Object.keys(tribeData.culture)[Math.floor(Math.random() * Object.keys(tribeData.culture).length)];
-            const randomClanKey = Object.keys(tribeData.clans)[Math.floor(Math.random() * Object.keys(tribeData.clans).length)];
-            const cultureInfo = tribeData.culture[randomCultureKey];
-            const clanInfo = tribeData.clans[randomClanKey];
-
-            const npcInterface = document.getElementById('npcInterface');
-            npcInterface.innerHTML = `
-                <h2>Wisdom from ${randomMember.name}</h2>
-                <p><strong>Culture Insight:</strong> ${cultureInfo}</p>
-                <p><strong>Clan Information:</strong> ${clanInfo}</p>
-                <button class="choice-button" onclick="goBack()">Go Back</button>
-            `;
-            npcInterface.style.display = 'flex';
-            document.getElementById('gameInterface').style.display = 'none';
-        }
-    }
-
-    // Load a random story
-    async function loadStory() {
-        const tribeData = await fetchTribeData();
-        if (tribeData) {
-            const randomStoryKey = Object.keys(tribeData.stories)[Math.floor(Math.random() * Object.keys(tribeData.stories).length)];
-            const randomStory = tribeData.stories[randomStoryKey];
-            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
-
-            const storyPage = document.getElementById('storyPage');
-            storyPage.innerHTML = `
-                <h2>A Story from ${randomMember.name}</h2>
-                <p>${randomStory}</p>
-                <button class="choice-button" onclick="goBack()">Go Back</button>
-            `;
-            storyPage.style.display = 'flex';
-            document.getElementById('gameInterface').style.display = 'none';
-        }
-    }
-
-    // Go back to main interface
-    function goBack() {
-        document.getElementById('npcInterface').style.display = 'none';
-        document.getElementById('storyPage').style.display = 'none';
-        document.getElementById('questPage').style.display = 'none';
-        document.getElementById('gameInterface').style.display = 'flex';
-    }
-
-    // Load quests
-    async function loadQuest() {
-        const tribeData = await fetchTribeData();
-        if (tribeData) {
-            const gatherables = tribeData.gatherables;
-            const randomObject = gatherables.objects[Math.floor(Math.random() * gatherables.objects.length)];
-            const randomPlant = gatherables.plants[Math.floor(Math.random() * gatherables.plants.length)];
-            const randomOther = gatherables.others[Math.floor(Math.random() * gatherables.others.length)];
-
-            const questPage = document.getElementById('questPage');
-            questPage.innerHTML = `
-                <h2>Quest: Help the Tribe</h2>
-                <p>Your task is to gather the following:</p>
-                <ul>
-                    <li>${randomObject}</li>
-                    <li>${randomPlant}</li>
-                    <li>${randomOther}</li>
-                </ul>
-                <button class="choice-button" onclick="goBack()">Go Back</button>
-            `;
-            questPage.style.display = 'flex';
-            document.getElementById('gameInterface').style.display = 'none';
+    function chooseAction(action) {
+        if (action === 'ask for wisdom') {
+            alert("You asked for wisdom...");
+        } else if (action === 'seek a quest') {
+            alert("You chose to seek a quest.");
+        } else if (action === 'ask for a story') {
+            alert("You asked for a tribal story...");
         }
     }
 </script>
