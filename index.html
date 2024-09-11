@@ -6,6 +6,9 @@
     <title>Echoes of the Cherokee Nation</title>
     <link rel="icon" href="favicon.ico"> <!-- Added favicon link -->
 
+    <!-- Importing a native-style font -->
+    <link href="https://fonts.googleapis.com/css2?family=Petrona&display=swap" rel="stylesheet">
+
     <style>
         body, html {
             margin: 0;
@@ -14,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Petrona', serif; /* Native-like font */
             background-color: #f0e6d6;
             overflow: hidden;
         }
@@ -151,6 +154,7 @@
     <h2>You meet the tribe elders...</h2>
     <p>What will you do?</p>
     <button class="choice-button" onclick="chooseAction('ask for wisdom')">Ask for Wisdom</button>
+    <button class="choice-button" onclick="chooseAction('ask for a story')">Ask for a Story</button> <!-- New button -->
     <button class="choice-button" onclick="chooseAction('seek a quest')">Seek a Quest</button>
 </div>
 
@@ -232,6 +236,8 @@
             loadWisdom();
         } else if (action === 'seek a quest') {
             loadQuest();
+        } else if (action === 'ask for a story') {
+            loadStory();
         }
     }
 
@@ -239,26 +245,57 @@
     async function fetchTribeData() {
         try {
             const response = await fetch('Cherokee_Tribe_Game_Data.json');
-            if (!response.ok) {
-                console.error("Error loading JSON:", response.statusText);
-                return null;
-            }
             const tribeData = await response.json();
-            console.log("Successfully loaded tribe data:", tribeData); // Added logging
             return tribeData;
         } catch (error) {
-            console.error("There was an issue loading the tribe data:", error);
-            return null;
+            alert('There was an issue loading the tribe data: ' + error);
         }
     }
 
-    // Load quests
+    // Load wisdom (random stories, culture, clans)
+    async function loadWisdom() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
+            const cultureInfo = tribeData.culture.Cherokee_Values;
+            const clanInfo = tribeData.clans.Wolf_Clan;
+            const npcInterface = document.getElementById('npcInterface');
+            npcInterface.innerHTML = `
+                <h2>Wisdom from ${randomMember.name}</h2>
+                <p>${cultureInfo}</p>
+                <p>${clanInfo}</p>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            npcInterface.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        } else {
+            alert("No data available.");
+        }
+    }
+
+    // Load a random story
+    async function loadStory() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const randomStory = tribeData.stories["The Origin of Fire"];
+            const storyPage = document.getElementById('storyPage');
+            storyPage.innerHTML = `
+                <h2>Cherokee Story</h2>
+                <p>${randomStory}</p>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            storyPage.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        } else {
+            alert("No story available.");
+        }
+    }
+
+    // Load a random quest
     async function loadQuest() {
         const tribeData = await fetchTribeData();
-        if (tribeData && tribeData.quests && tribeData.quests.length > 0) {
+        if (tribeData && tribeData.quests.length > 0) {
             const randomQuest = tribeData.quests[Math.floor(Math.random() * tribeData.quests.length)];
-            console.log("Loaded quest:", randomQuest);
-
             const npcInterface = document.getElementById('npcInterface');
             npcInterface.innerHTML = `
                 <h2>Quest: ${randomQuest.name}</h2>
@@ -272,30 +309,10 @@
         }
     }
 
-    // Load wisdom (stories, culture, clans)
-    async function loadWisdom() {
-        const tribeData = await fetchTribeData();
-        if (tribeData) {
-            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
-            const randomStory = tribeData.stories[randomMember.stories[0]] || "No story available.";
-            console.log("Loaded wisdom from:", randomMember.name);
-
-            const npcInterface = document.getElementById('npcInterface');
-            npcInterface.innerHTML = `
-                <h2>Wisdom from ${randomMember.name}</h2>
-                <p>${randomStory}</p>
-                <button class="choice-button" onclick="goBack()">Go Back</button>
-            `;
-            npcInterface.style.display = 'flex';
-            document.getElementById('gameInterface').style.display = 'none';
-        } else {
-            alert("No data available for this selection.");
-        }
-    }
-
     // Go back to the previous screen
     function goBack() {
         document.getElementById('npcInterface').style.display = 'none';
+        document.getElementById('storyPage').style.display = 'none';
         document.getElementById('gameInterface').style.display = 'flex';
     }
 </script>
