@@ -320,6 +320,7 @@
             const storyPage = document.getElementById('storyPage');
             storyPage.innerHTML = `
                 <h2>A Story from ${randomMember.name}</h2>
+                <h3>Title: ${randomStoryKey}</h3>
                 <p>${randomStory}</p>
                 <button class="choice-button" onclick="goBack()">Go Back</button>
             `;
