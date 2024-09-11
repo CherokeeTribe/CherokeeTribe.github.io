@@ -9,7 +9,7 @@
         {
             "name": "Eden Moore-Greene",
             "role": "Wise elder",
-            "stories": ["The Eagles Revenge"],
+            "stories": ["The Eagle's Revenge"],
             "culture_info": "Eden discusses the balance of life and the importance of Cherokee values like respect, humility, and trust."
         },
         {
@@ -50,8 +50,8 @@
         }
     ],
     "stories": {
-        "The Origin of Fire": "Long ago, the animals of the earth lived in a time of darkness, as fire was unknown to them. One day, they saw a flicker of light on an island far across the water. It was the first fire, guarded jealously by the Thunders, powerful beings who lived there. The animals gathered to discuss how they could bring the fire to their own land. After much deliberation, it was decided that the only way to acquire it was to send the swiftest among them to retrieve it. First, the Raven volunteered. With his dark wings, he flew across the water to the island. He waited until the Thunders weren't looking, then he swooped down to grab a piece of the fire. But as he grasped it in his beak, the flames singed his feathers, turning them black. He dropped the fire and returned to the animals with nothing but his burnt feathers as proof of his attempt. Next, the Screech Owl tried his luck. He flew silently over the water and approached the fire. But when he tried to pick it up, the sparks flew into his eyes, giving him his fiery red eyes that all screech owls have today. He, too, returned without the fire. The animals were losing hope when the lowly Water Spider stepped forward. The other animals scoffed at her, but she assured them she could do it. She spun a small web and made it into a tiny bowl that she could carry on her back. Then she scurried across the water to the island. The Thunders did not notice the little Water Spider as she approached the fire. She carefully took a single ember and placed it in her web bowl. She then hurried back across the water to the animals on the mainland. The animals rejoiced when they saw the little ember in the Water Spider’s bowl. They used it to create fire, which they have kept ever since. From that day on, the Water Spider was revered for her cleverness and bravery, and the fire has brought warmth and light to the Cherokee people.",
-        "The Eagles Revenge": "Once a hunter in the mountains heard a noise at night like a rushing wind. He went outside his tepee, and found an eagle was sitting on the drying pole, feasting at the deer he had shot. So, he shot the eagle. The next morning the hunter took the deer back to the village. He told how he had shot the deer and then the eagle. Therefore the chief sent out men to bring in the eagle, and have an Eagle dance. That night when they were dancing, there was a whoop outside. A strange warrior walked into the circle. He was not of that village. They thought he had come from one of the other Cherokee villages. This warrior told how he had killed a man. At the end of the story, he yelled, “Hi!” One of the men with rattles, who was leading the dance, fell dead. The stranger sang of another deed. At the end he yelled, “Hi!” Another rattler fell dead. The people were frightened. But the stranger sang of another great deed. Then again, he yelled, “Hi!” Again, a man with the rattles fell dead. So, all seven men who had rattles and who were leading the dance fell dead. And the people were too frightened to leave the lodge where they were dancing. Then the stranger vanished into the darkness. Long after, they learned that the stranger was the brother of the eagle that had been killed.",
+        "The Origin of Fire": "Long ago, the animals of the earth lived in a time of darkness, as fire was unknown to them...",
+        "The Eagles Revenge": "Once a hunter in the mountains heard a noise at night like a rushing wind...",
         "Strangers": "Up on a ridge, a rough eminence about a dozen miles from Tennessee was once an abiding place of Cherokee..."
     },
     "clans": {
@@ -64,22 +64,22 @@
         "Paint Clan": "Members of the Paint Clan were historically known as medicine people. They would paint medicine on a patient after harvesting and mixing the herbs for ceremonies."
     },
     "culture": {
-        "Cherokee Society": "Cherokee society is historically matrilineal. The women were considered the head of the household, and the home and children belonged to her should she separate from her husband. Clan membership is passed through the mother.",
-        "Homes": "The Cherokee Natives lived in villages. They built circular homes made of river cane, sticks, and plaster. They also built larger seven-sided buildings for ceremonial purposes.",
-        "Cherokee Values": "Cherokee Nation values are balance, harmony, cooperation, and respect within the community. Hunters took only what was needed and offered respect to the animals."
+        "Cherokee Society": "Cherokee society is historically matrilineal...",
+        "Homes": "The Cherokee Natives lived in villages. They built circular homes made of river cane, sticks, and plaster...",
+        "Cherokee Values": "Cherokee Nation values: balance, harmony, cooperation, and respect within the community..."
     },
     "quests": [
         {
-            "title": "Gather Healing Herbs",
-            "description": "You are tasked with gathering sacred herbs for the healer. The herbs are rare and grow near the river."
+            "name": "Gather Sticks and Stones",
+            "description": "Help the tribe by gathering sticks and stones for building materials."
         },
         {
-            "title": "Hunt for the Tribe",
-            "description": "The hunters of the tribe need help to gather food. Go out and hunt game, but be sure to respect the balance of nature."
+            "name": "Hunt for Red Meat",
+            "description": "The tribe is in need of red meat to prepare for an upcoming feast. Hunt and bring back enough to feed everyone."
         },
         {
-            "title": "Help Rebuild the Fire",
-            "description": "The sacred fire is dying, and the Firekeeper needs help. Find firewood and bring it to the council."
+            "name": "Collect Herbs",
+            "description": "Go and collect important medicinal herbs such as mint, yarrow, and peyote for the tribe healer."
         }
     ]
 }

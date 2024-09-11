@@ -7,7 +7,6 @@
     <link rel="icon" href="favicon.ico"> <!-- Added favicon link -->
 
     <style>
-        /* Add your styles here */
         body, html {
             margin: 0;
             padding: 0;
@@ -126,7 +125,7 @@
     </div>
 
     <div class="menu-buttons">
-        <button onclick="startGame()">Start Game</button>
+        <button onclick="startGame()">Travel to the Tribal Grounds</button> <!-- Updated button text -->
         <button onclick="toggleSettings()">Settings</button>
         <button onclick="showCredits()">Credits</button>
     </div>
@@ -144,7 +143,7 @@
 <div class="game-screen" id="gameScreen">
     <h1>Welcome to the World of the Cherokee Nation!</h1>
     <p>The adventure begins...</p>
-    <button class="choice-button" onclick="startQuest()">Begin Your First Quest</button>
+    <button class="choice-button" onclick="startQuest()">Begin Your Journey</button>
 </div>
 
 <!-- Interaction interface -->
@@ -185,7 +184,7 @@
     function playMusic() {
         const bgMusic = document.getElementById('bgMusic');
         bgMusic.play().catch(() => {
-            alert("Click 'Start Game' to enable the music.");
+            alert("Click 'Travel to the Tribal Grounds' to enable the music.");
         });
     }
 
@@ -257,28 +256,20 @@
     async function loadQuest() {
         const tribeData = await fetchTribeData();
         if (tribeData && tribeData.quests && tribeData.quests.length > 0) {
-            // Pick a random quest
             const randomQuest = tribeData.quests[Math.floor(Math.random() * tribeData.quests.length)];
-            console.log("Loaded quest:", randomQuest); // Log the selected quest
+            console.log("Loaded quest:", randomQuest);
 
             const npcInterface = document.getElementById('npcInterface');
             npcInterface.innerHTML = `
-                <h2>Quest: ${randomQuest.title}</h2>
+                <h2>Quest: ${randomQuest.name}</h2>
                 <p>${randomQuest.description}</p>
                 <button class="choice-button" onclick="goBack()">Go Back</button>
             `;
             npcInterface.style.display = 'flex';
             document.getElementById('gameInterface').style.display = 'none';
         } else {
-            console.error("No quests available:", tribeData ? tribeData.quests : "Tribe data is null");
             alert("No quests available.");
         }
-    }
-
-    // Function to go back to the previous screen
-    function goBack() {
-        document.getElementById('npcInterface').style.display = 'none';
-        document.getElementById('gameInterface').style.display = 'flex';
     }
 
     // Load wisdom (stories, culture, clans)
@@ -286,13 +277,13 @@
         const tribeData = await fetchTribeData();
         if (tribeData) {
             const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
-            const story = tribeData.stories[randomMember.stories[0]] || "No story available.";
+            const randomStory = tribeData.stories[randomMember.stories[0]] || "No story available.";
             console.log("Loaded wisdom from:", randomMember.name);
 
             const npcInterface = document.getElementById('npcInterface');
             npcInterface.innerHTML = `
                 <h2>Wisdom from ${randomMember.name}</h2>
-                <p>${story}</p>
+                <p>${randomStory}</p>
                 <button class="choice-button" onclick="goBack()">Go Back</button>
             `;
             npcInterface.style.display = 'flex';
@@ -300,6 +291,12 @@
         } else {
             alert("No data available for this selection.");
         }
+    }
+
+    // Go back to the previous screen
+    function goBack() {
+        document.getElementById('npcInterface').style.display = 'none';
+        document.getElementById('gameInterface').style.display = 'flex';
     }
 </script>
 
