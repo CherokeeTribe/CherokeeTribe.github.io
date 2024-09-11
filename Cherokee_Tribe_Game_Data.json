@@ -56,12 +56,12 @@
     },
     "clans": {
         "Long Hair Clan": "The Long Hair Clan, whose subdivisions are Twister, Wind, and Strangers, are known to be a very peaceful clan. In the times of the Peace Chief and War Chief government, the Peace Chief would come from this clan. Prisoners of war, orphans of other tribes, and others with no Cherokee tribe were often adopted into this clan, thus the name Strangers.\n\nAt some Cherokee ceremonial grounds, the Long Hair arbor is on the East side and also houses the chiefs and other leaders of the ground.",
-        "Blue Clan": "The Blue Clan's subdivisions are Panther or Wildcat and Bear, which is considered the oldest clan...",
-        "Wolf Clan": "The Wolf Clan has been known throughout time to be the largest clan...",
-        "Wild Potato Clan": "Members of this clan were known to be 'keepers of the land,' and gatherers...",
-        "Deer Clan": "Members of the Deer Clan were known as fast runners and hunters...",
-        "Bird Clan": "Members of the Bird Clan were known as messengers between the people and the Creator...",
-        "Paint Clan": "Members of the Paint Clan were historically known as medicine people..."
+        "The Blue Clan": "The Blue Clan's subdivisions are Panther or Wildcat and Bear, which is considered the oldest clan.\n\nThis clan produced people who were able to make special medicines for children.\n\nAt some Cherokee ceremonial grounds, the Blue arbor is to the left of the Long Hair arbor.",
+        "The Wolf Clan": "The Wolf has been known throughout time to be the largest clan.\n\nDuring the time of the Peace Chief and War Chief government, the War Chief would come from this clan.\n\nWolves are known as protectors. At some Cherokee ceremonial grounds, the Wolf arbor is to the left of the Blue arbor.",
+		"The Wild Potato Clan": "The Wild Potato Clan's subdivision is Blind Savannah.\n\nMembers of this clan were known to be 'keepers of the land,' and gatherers.\n\nThe wild potato was a staple of the traditional Cherokee diet back east. At some Cherokee ceremonial grounds, the Wild Potato arbor is to the left of the Wolf arbor.",
+		"The Deer Clan": "Members of the Deer Clan were known as fast runners and hunters.\n\nEven though they hunted game for subsistence, they respected and cared for the animals while they were living among them.\n\nThey were also known as messengers on an earthly level, delivering messages from village to village, or person to person. At some Cherokee ceremonial grounds, the Deer arbor is to the left of the Wild Potato arbor.",
+		"The Bird Clan": "Members of the Bird Clan were known as messengers.\n\nThe belief that birds are messengers between earth and heaven, or the people and Creator, gave the members of this clan the responsibility of caring for the birds.\n\nThe subdivisions are Raven, Turtle Dove, and Eagle. Eagle feathers were originally presented by the members of this clan, as they were the only ones able to collect them. At some Cherokee ceremonial grounds, the Bird arbor is to the left of the Deer arbor.",
+		"The Paint Clan": "Members of the Paint Clan were historically known as medicine people.\n\nMedicine is often 'painted' on a patient after harvesting, mixing, and performing other aspects of the ceremony.\n\nAt some Cherokee ceremonial grounds, the Paint arbor is to the left of the Bird arbor."
     },
     "culture": {
         "Cherokee Society": "Cherokee society is historically matrilineal...",
