@@ -9,7 +9,7 @@
         {
             "name": "Eden Moore-Greene",
             "role": "Wise elder",
-            "stories": ["The Eagle's Revenge"],
+            "stories": ["The Eagles Revenge"],
             "culture_info": "Eden discusses the balance of life and the importance of Cherokee values like respect, humility, and trust."
         },
         {
@@ -50,36 +50,22 @@
         }
     ],
     "stories": {
-        "The Origin of Fire": "Long ago, the animals of the earth lived in a time of darkness, as fire was unknown to them...",
+        "The Origin of Fire": "Long ago, the animals of the earth lived in a time of darkness...",
         "The Eagles Revenge": "Once a hunter in the mountains heard a noise at night like a rushing wind...",
         "Strangers": "Up on a ridge, a rough eminence about a dozen miles from Tennessee was once an abiding place of Cherokee..."
     },
     "clans": {
-        "Long Hair Clan": "The Long Hair Clan's subdivisions are Twister, Wind, and Strangers. They are known to be a very peaceful clan. In the times of the Peace Chief and War Chief government, the Peace Chief would come from this clan.",
-        "Blue Clan": "The Blue Clan's subdivisions are Panther or Wildcat and Bear, which is considered the oldest clan. This clan produced people who were able to make special medicines for children.",
-        "Wolf Clan": "The Wolf Clan has been known throughout time to be the largest clan. Wolves are known as protectors. In times of war, the War Chief would come from this clan.",
-        "Wild Potato Clan": "Members of this clan were known to be 'keepers of the land,' and gatherers. The wild potato was a staple of the traditional Cherokee diet back east.",
-        "Deer Clan": "Members of the Deer Clan were known as fast runners and hunters, delivering messages from village to village.",
-        "Bird Clan": "Members of the Bird Clan were known as messengers between the people and the Creator. They cared for the birds and provided feathers for ceremonial use.",
-        "Paint Clan": "Members of the Paint Clan were historically known as medicine people. They would paint medicine on a patient after harvesting and mixing the herbs for ceremonies."
+        "Long Hair Clan": "The Long Hair Clan's subdivisions are Twister, Wind, and Strangers. They are known to be a very peaceful clan...",
+        "Blue Clan": "The Blue Clan's subdivisions are Panther or Wildcat and Bear, which is considered the oldest clan...",
+        "Wolf Clan": "The Wolf Clan has been known throughout time to be the largest clan...",
+        "Wild Potato Clan": "Members of this clan were known to be 'keepers of the land,' and gatherers...",
+        "Deer Clan": "Members of the Deer Clan were known as fast runners and hunters...",
+        "Bird Clan": "Members of the Bird Clan were known as messengers between the people and the Creator...",
+        "Paint Clan": "Members of the Paint Clan were historically known as medicine people..."
     },
     "culture": {
         "Cherokee Society": "Cherokee society is historically matrilineal...",
         "Homes": "The Cherokee Natives lived in villages. They built circular homes made of river cane, sticks, and plaster...",
         "Cherokee Values": "Cherokee Nation values: balance, harmony, cooperation, and respect within the community..."
-    },
-    "quests": [
-        {
-            "name": "Gather Sticks and Stones",
-            "description": "Help the tribe by gathering sticks and stones for building materials."
-        },
-        {
-            "name": "Hunt for Red Meat",
-            "description": "The tribe is in need of red meat to prepare for an upcoming feast. Hunt and bring back enough to feed everyone."
-        },
-        {
-            "name": "Collect Herbs",
-            "description": "Go and collect important medicinal herbs such as mint, yarrow, and peyote for the tribe healer."
-        }
-    ]
+    }
 }
