@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
-	<style>
+<style>
     body, html {
         margin: 0;
         padding: 0;
@@ -12,11 +12,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: 'Papyrus', 'Arial', sans-serif; /* Using a more "native" style font like Papyrus */
+        font-family: 'Papyrus', 'Arial', sans-serif; /* Native-style font */
         background-color: #000;
-        color: white;  /* Ensure the text is white and visible */
+        color: white;
     }
 
+    /* Home screen with gif background */
     .home-screen {
         position: absolute;
         width: 100%;
@@ -24,25 +25,32 @@
         background-image: url('https://c10.patreonusercontent.com/4/patreon-media/p/campaign/10296502/c1e7bf57295a4f43abb9662fa4349d6c/eyJ3IjoxOTIwLCJ3ZSI6MX0%3D/11.gif?token-time=1728000000&token-hash=ToDoNWISMhNw6Jf1VTM-i0y0GIPbBsF7600BCoR-I7c%3D');
         background-size: cover;
         background-position: center;
-        color: white; /* Text on the home screen should also be white */
     }
 
+    /* Apply light, native-inspired backgrounds to the game pages */
     .overlay, .game-screen, .npc-interface, .story-page, .clan-page, .culture-page {
-        color: white; /* Ensure all text within the game screens is white */
+        background-color: #f4e3c5; /* Light, earthy tone background */
+        color: #2d2d2d; /* Darker text for better contrast on light background */
         font-size: 16px;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #8b5e34; /* Earthy brown borders for a native look */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for a raised look */
     }
 
+    /* Game title with white text */
     .game-title {
         font-size: 48px;
         letter-spacing: 2px;
         margin-bottom: 20px;
-        color: white;  /* Ensure the game title is white */
+        color: white;
     }
 
+    /* Loading bar with earthy tones */
     .loading-bar {
         width: 60%;
         height: 15px;
-        background-color: #333;
+        background-color: #8b5e34;
         border-radius: 10px;
         margin-top: 10px;
         overflow: hidden;
@@ -55,21 +63,22 @@
         transition: width 2s ease-in-out;
     }
 
+    /* Menu buttons */
     .menu-buttons button {
         margin: 10px;
         padding: 15px 30px;
-        background-color: #007bff;
+        background-color: #8b5e34;
         border: none;
         border-radius: 8px;
         color: white;
         font-size: 20px;
         cursor: pointer;
-        font-family: 'Papyrus', 'Arial', sans-serif; /* Apply the native-style font to buttons as well */
+        font-family: 'Papyrus', 'Arial', sans-serif; /* Native-style font */
         transition: background-color 0.3s;
     }
 
     .menu-buttons button:hover {
-        background-color: #0056b3;
+        background-color: #623a1d;
     }
 
     .menu-buttons {
@@ -88,14 +97,18 @@
         border-radius: 15px;
     }
 
-    /* Game screen */
-    .game-screen, .npc-interface, .story-page, .clan-page, .culture-page {
+    /* Game interface */
+    .game-interface, .npc-interface, .story-page, .clan-page, .culture-page {
         display: none;
         justify-content: center;
         align-items: center;
-        color: white;
+        background-color: #f4e3c5; /* Light, earthy tone background */
+        color: #2d2d2d; /* Darker text for better readability */
         font-size: 16px;
         padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #8b5e34; /* Native-style brown borders */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .fade-in {
@@ -107,38 +120,34 @@
         100% { opacity: 1; }
     }
 
-    /* Interaction interface */
-    .game-interface {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-    }
-
+    /* Choice button styles */
     .choice-button {
         padding: 10px 20px;
         margin: 10px;
-        background-color: #007bff;
+        background-color: #8b5e34;
         border: none;
         border-radius: 5px;
         color: white;
         cursor: pointer;
-        font-family: 'Papyrus', 'Arial', sans-serif; /* Apply the font style to all buttons */
+        font-family: 'Papyrus', 'Arial', sans-serif;
     }
 
     .choice-button:hover {
-        background-color: #0056b3;
+        background-color: #623a1d;
     }
 
+    /* Text styling for headers and paragraphs */
     h2 {
-        font-family: 'Papyrus', 'Arial', sans-serif; /* Use the native-style font for headers */
+        font-family: 'Papyrus', 'Arial', sans-serif;
+        font-size: 24px;
     }
 
     p {
-        font-family: 'Papyrus', 'Arial', sans-serif; /* Apply the font style to all paragraph text */
+        font-family: 'Papyrus', 'Arial', sans-serif;
+        font-size: 18px;
     }
-	</style>
+</style>
+
 
 </head>
 <body>
