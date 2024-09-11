@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
-    <!-- Importing Google Font for Native-Themed Style -->
-    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -14,20 +12,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Atma', sans-serif; /* Use the custom font */
+            font-family: 'Arial', sans-serif;
             background-color: #000;
-            color: #fff;
             overflow: hidden;
+            color: white; /* Ensure all text is visible */
         }
-		
-        /* Native style theming */
-        .native-text {
-            font-family: 'Atma', sans-serif;
-            font-size: 20px;
-            color: #ffebcd; /* Light beige/gold */
-            letter-spacing: 1px;
-        }
-		
+
         .home-screen {
             position: absolute;
             width: 100%;
@@ -54,9 +44,8 @@
 
         .game-title {
             font-size: 48px;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 20px;
-            font-family: 'Atma', sans-serif; /* Applying Native-themed font */
         }
 
         .loading-bar {
@@ -78,18 +67,17 @@
         .menu-buttons button {
             margin: 10px;
             padding: 15px 30px;
-            background-color: #8b4513; /* Native-themed brown */
+            background-color: #007bff;
             border: none;
             border-radius: 8px;
             color: white;
             font-size: 20px;
             cursor: pointer;
             transition: background-color 0.3s;
-            font-family: 'Atma', sans-serif; /* Applying font */
         }
 
         .menu-buttons button:hover {
-            background-color: #a0522d;
+            background-color: #0056b3;
         }
 
         .menu-buttons {
@@ -134,13 +122,12 @@
             justify-content: center;
             align-items: center;
             color: white;
-            font-family: 'Atma', sans-serif; /* Native-themed font */
         }
 
         .choice-button {
             padding: 10px 20px;
             margin: 10px;
-            background-color: #8b4513; /* Native-themed brown */
+            background-color: #007bff;
             border: none;
             border-radius: 5px;
             color: white;
@@ -148,7 +135,7 @@
         }
 
         .choice-button:hover {
-            background-color: #a0522d;
+            background-color: #0056b3;
         }
 
         .story-page, .npc-interface, .quest-page {
@@ -200,18 +187,18 @@
 
 <!-- Game screen that will be displayed after start -->
 <div class="game-screen" id="gameScreen">
-    <h1 class="native-text">Welcome to the World of the Cherokee Nation!</h1>
-    <p class="native-text">The adventure begins...</p>
-    <button class="choice-button" onclick="startQuest()">Travel to the Tribal Grounds</button>
+    <h1>Welcome to the World of the Cherokee Nation!</h1>
+    <p>The adventure begins...</p>
+    <button class="choice-button" onclick="beginJourney()">Begin Your Journey</button>
 </div>
 
 <!-- Interaction interface -->
 <div class="game-interface" id="gameInterface">
-    <h2 class="native-text">You meet the tribe elders...</h2>
-    <p class="native-text">What will you do?</p>
-    <button class="choice-button" onclick="chooseAction('ask for wisdom')">Ask for Wisdom</button>
-    <button class="choice-button" onclick="chooseAction('seek a quest')">Seek a Quest</button>
-    <button class="choice-button" onclick="chooseAction('ask for a story')">Ask for a Story</button>
+    <h2>You meet the tribe elders...</h2>
+    <p>What will you do?</p>
+    <button class="choice-button" onclick="loadWisdom()">Ask for Wisdom</button>
+    <button class="choice-button" onclick="loadQuest()">Seek a Quest</button>
+    <button class="choice-button" onclick="loadStory()">Ask for a Story</button>
 </div>
 
 <div class="npc-interface page-background" id="npcInterface"></div>
