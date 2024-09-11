@@ -4,139 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            background-color: #000;
-            color: white;  /* Ensure text is visible */
-        }
+	<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Papyrus', 'Arial', sans-serif; /* Using a more "native" style font like Papyrus */
+        background-color: #000;
+        color: white;  /* Ensure the text is white and visible */
+    }
 
-        .home-screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://c10.patreonusercontent.com/4/patreon-media/p/campaign/10296502/c1e7bf57295a4f43abb9662fa4349d6c/eyJ3IjoxOTIwLCJ3ZSI6MX0%3D/11.gif?token-time=1728000000&token-hash=ToDoNWISMhNw6Jf1VTM-i0y0GIPbBsF7600BCoR-I7c%3D');
-            background-size: cover;
-            background-position: center;
-        }
+    .home-screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://c10.patreonusercontent.com/4/patreon-media/p/campaign/10296502/c1e7bf57295a4f43abb9662fa4349d6c/eyJ3IjoxOTIwLCJ3ZSI6MX0%3D/11.gif?token-time=1728000000&token-hash=ToDoNWISMhNw6Jf1VTM-i0y0GIPbBsF7600BCoR-I7c%3D');
+        background-size: cover;
+        background-position: center;
+        color: white; /* Text on the home screen should also be white */
+    }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
+    .overlay, .game-screen, .npc-interface, .story-page, .clan-page, .culture-page {
+        color: white; /* Ensure all text within the game screens is white */
+        font-size: 16px;
+    }
 
-        .game-title {
-            font-size: 48px;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
+    .game-title {
+        font-size: 48px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        color: white;  /* Ensure the game title is white */
+    }
 
-        .loading-bar {
-            width: 60%;
-            height: 15px;
-            background-color: #333;
-            border-radius: 10px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
+    .loading-bar {
+        width: 60%;
+        height: 15px;
+        background-color: #333;
+        border-radius: 10px;
+        margin-top: 10px;
+        overflow: hidden;
+    }
 
-        .loading-fill {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 0%;
-            transition: width 2s ease-in-out;
-        }
+    .loading-fill {
+        height: 100%;
+        background-color: #4CAF50;
+        width: 0%;
+        transition: width 2s ease-in-out;
+    }
 
-        .menu-buttons button {
-            margin: 10px;
-            padding: 15px 30px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .menu-buttons button {
+        margin: 10px;
+        padding: 15px 30px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        font-family: 'Papyrus', 'Arial', sans-serif; /* Apply the native-style font to buttons as well */
+        transition: background-color 0.3s;
+    }
 
-        .menu-buttons button:hover {
-            background-color: #0056b3;
-        }
+    .menu-buttons button:hover {
+        background-color: #0056b3;
+    }
 
-        .menu-buttons {
-            display: flex;
-            flex-direction: column;
-            margin-top: 30px;
-        }
+    .menu-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+    }
 
-        .settings-menu {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-        }
+    .settings-menu {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+    }
 
-        /* Game screen */
-        .game-screen, .npc-interface, .story-page, .clan-page, .culture-page {
-            display: none;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 16px;
-            padding: 20px;
-        }
+    /* Game screen */
+    .game-screen, .npc-interface, .story-page, .clan-page, .culture-page {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 16px;
+        padding: 20px;
+    }
 
-        .fade-in {
-            animation: fadeIn 3s ease;
-        }
+    .fade-in {
+        animation: fadeIn 3s ease;
+    }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
 
-        /* Interaction interface */
-        .game-interface {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
+    /* Interaction interface */
+    .game-interface {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
 
-        .choice-button {
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-        }
+    .choice-button {
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-family: 'Papyrus', 'Arial', sans-serif; /* Apply the font style to all buttons */
+    }
 
-        .choice-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    .choice-button:hover {
+        background-color: #0056b3;
+    }
+
+    h2 {
+        font-family: 'Papyrus', 'Arial', sans-serif; /* Use the native-style font for headers */
+    }
+
+    p {
+        font-family: 'Papyrus', 'Arial', sans-serif; /* Apply the font style to all paragraph text */
+    }
+	</style>
+
 </head>
 <body>
 
