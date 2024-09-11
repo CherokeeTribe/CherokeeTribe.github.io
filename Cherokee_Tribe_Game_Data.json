@@ -68,6 +68,19 @@
         "Wolf Clan": "The Wolf Clan has been known throughout time to be the largest clan. During the time of the Peace Chief and War Chief government, the War Chief would come from this clan.",
         "Wild Potato Clan": "Members of this clan were known to be 'keepers of the land' and gatherers. The wild potato was a staple of the traditional Cherokee diet."
     },
+	"quests": [
+        {
+            "title": "Gather Healing Herbs",
+            "description": "You are tasked with gathering sacred herbs for the healer. The herbs are rare and grow near the river."
+        },
+        {
+            "title": "Hunt for the Tribe",
+            "description": "The hunters of the tribe need help to gather food. Go out and hunt game, but be sure to respect the balance of nature."
+        },
+        {
+            "title": "Help Rebuild the Fire",
+            "description": "The sacred fire is dying, and the Firekeeper needs help. Find firewood and bring it to the council."
+        },
     "culture": {
         "Cherokee Society": "Cherokee society is historically matrilineal. Women were considered the head of the household, and clanship was passed through the mother.",
         "Homes": "The Cherokee Natives lived in villages. They built circular homes made of river cane, sticks, and plaster. They covered the roofs with thatch and left a small hole in the center to let the smoke out.",

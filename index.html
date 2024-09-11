@@ -303,14 +303,22 @@
 
     async function loadQuest() {
         const tribeData = await fetchTribeData();
-        const npcInterface = document.getElementById('npcInterface');
-        npcInterface.innerHTML = `
-            <h2>You have been given a quest!</h2>
-            <p>${tribeData.quests[0]}</p>
-            <button class="choice-button" onclick="goBack()">Go Back</button>
-        `;
-        npcInterface.style.display = 'flex';
-        document.getElementById('gameInterface').style.display = 'none';
+        const quests = tribeData.quests;
+
+        if (quests && quests.length > 0) {
+            // Pick a random quest
+            const randomQuest = quests[Math.floor(Math.random() * quests.length)];
+            const npcInterface = document.getElementById('npcInterface');
+            npcInterface.innerHTML = `
+                <h2>Quest: ${randomQuest.title}</h2>
+                <p>${randomQuest.description}</p>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            npcInterface.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        } else {
+            alert("No quests available.");
+        }
     }
 
     async function askForStory(story) {
