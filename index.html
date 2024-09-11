@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&family=Pinyon+Script&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -12,10 +13,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Crimson Text', serif;
             background-color: #000;
             overflow: hidden;
-            color: white; /* Ensure all text is visible */
+            color: white;
         }
 
         .home-screen {
@@ -46,6 +47,7 @@
             font-size: 48px;
             letter-spacing: 2px;
             margin-bottom: 20px;
+            font-family: 'Pinyon Script', cursive;
         }
 
         .loading-bar {
@@ -73,6 +75,7 @@
             color: white;
             font-size: 20px;
             cursor: pointer;
+            font-family: 'Crimson Text', serif;
             transition: background-color 0.3s;
         }
 
@@ -131,6 +134,7 @@
             border: none;
             border-radius: 5px;
             color: white;
+            font-family: 'Crimson Text', serif;
             cursor: pointer;
         }
 
@@ -155,7 +159,7 @@
         }
 
         h2 {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Pinyon Script', cursive;
         }
     </style>
 </head>
@@ -207,7 +211,7 @@
 
 <div class="quest-page page-background" id="questPage"></div>
 
-<!-- Using local file path for background music -->
+<!-- Background music -->
 <audio id="bgMusic" loop>
     <source src="hymn.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -237,7 +241,6 @@
 
     // Button functions
     function startGame() {
-        // Hide the home screen and show the game screen
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.home-screen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'flex';
