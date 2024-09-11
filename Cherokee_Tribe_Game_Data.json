@@ -67,5 +67,32 @@
         "Cherokee Society": "Cherokee society is historically matrilineal...",
         "Homes": "The Cherokee Natives lived in villages. They built circular homes made of river cane, sticks, and plaster...",
         "Cherokee Values": "Cherokee Nation values: balance, harmony, cooperation, and respect within the community..."
+    },
+    "gatherables": {
+        "objects": [
+            "Sticks", 
+            "Stones", 
+            "Feathers", 
+            "Charcoal", 
+            "Sand for glass jars"
+        ],
+        "plants": [
+            "Psilocybin Mushroom (rare)", 
+            "Wintergreen Huckleberries", 
+            "Blackberries", 
+            "Raspberries", 
+            "Desert Sage", 
+            "Bulrush", 
+            "Yarrow", 
+            "Peyote", 
+            "Mint", 
+            "Flaxfiber"
+        ],
+        "others": [
+            "Snake venom", 
+            "Cotton (farmed item)", 
+            "Water bottles", 
+            "Red meat"
+        ]
     }
 }

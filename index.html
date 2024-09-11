@@ -138,7 +138,7 @@
             background-color: #0056b3;
         }
 
-        .story-page, .npc-interface {
+        .story-page, .npc-interface, .quest-page {
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -204,6 +204,8 @@
 <div class="npc-interface page-background" id="npcInterface"></div>
 
 <div class="story-page page-background" id="storyPage"></div>
+
+<div class="quest-page page-background" id="questPage"></div>
 
 <!-- Using local file path for background music -->
 <audio id="bgMusic" loop>
@@ -308,8 +310,9 @@
     async function loadStory() {
         const tribeData = await fetchTribeData();
         if (tribeData) {
+            const randomStoryKey = Object.keys(tribeData.stories)[Math.floor(Math.random() * Object.keys(tribeData.stories).length)];
+            const randomStory = tribeData.stories[randomStoryKey];
             const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
-            const randomStory = tribeData.stories[randomMember.stories[0]];
 
             const storyPage = document.getElementById('storyPage');
             storyPage.innerHTML = `
@@ -326,12 +329,33 @@
     function goBack() {
         document.getElementById('npcInterface').style.display = 'none';
         document.getElementById('storyPage').style.display = 'none';
+        document.getElementById('questPage').style.display = 'none';
         document.getElementById('gameInterface').style.display = 'flex';
     }
 
-    // Seek a quest (currently placeholder)
-    function loadQuest() {
-        alert("No quests available yet!");
+    // Load quests
+    async function loadQuest() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const gatherables = tribeData.gatherables;
+            const randomObject = gatherables.objects[Math.floor(Math.random() * gatherables.objects.length)];
+            const randomPlant = gatherables.plants[Math.floor(Math.random() * gatherables.plants.length)];
+            const randomOther = gatherables.others[Math.floor(Math.random() * gatherables.others.length)];
+
+            const questPage = document.getElementById('questPage');
+            questPage.innerHTML = `
+                <h2>Quest: Help the Tribe</h2>
+                <p>Your task is to gather the following:</p>
+                <ul>
+                    <li>${randomObject}</li>
+                    <li>${randomPlant}</li>
+                    <li>${randomOther}</li>
+                </ul>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            questPage.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        }
     }
 </script>
 
