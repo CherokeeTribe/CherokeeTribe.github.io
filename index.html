@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
+    <link rel="icon" href="favicon.ico"> <!-- Added favicon link -->
+
     <style>
+        /* Add your styles here */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            width: 100%;
-            font-family: 'Papyrus', 'Arial', sans-serif; /* Native-style font */
-            background-color: #f4e3c5; /* Light, earthy background */
-            color: #2d2d2d; /* Darker text for readability */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0e6d6;
+            overflow: hidden;
         }
-
         .home-screen {
             position: absolute;
             width: 100%;
@@ -22,129 +26,91 @@
             background-image: url('https://c10.patreonusercontent.com/4/patreon-media/p/campaign/10296502/c1e7bf57295a4f43abb9662fa4349d6c/eyJ3IjoxOTIwLCJ3ZSI6MX0%3D/11.gif?token-time=1728000000&token-hash=ToDoNWISMhNw6Jf1VTM-i0y0GIPbBsF7600BCoR-I7c%3D');
             background-size: cover;
             background-position: center;
-            color: white; /* Text on the home screen should be white */
         }
-
-        .overlay, .game-screen, .npc-interface, .story-page, .clan-page, .culture-page {
-            background-color: #f4e3c5; /* Light, earthy tone */
-            color: #2d2d2d; /* Dark text */
-            font-size: 16px;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #8b5e34; /* Earthy brown borders */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for raised look */
-            width: 90%; /* Ensure content fits well */
-            height: auto;
-            margin: 20px auto; /* Center the content */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
         }
-
         .game-title {
             font-size: 48px;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            color: white;
         }
-
+        .menu-buttons button {
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu-buttons button:hover {
+            background-color: #0056b3;
+        }
         .loading-bar {
             width: 60%;
             height: 15px;
-            background-color: #8b5e34;
+            background-color: #333;
             border-radius: 10px;
             margin-top: 10px;
             overflow: hidden;
         }
-
         .loading-fill {
             height: 100%;
             background-color: #4CAF50;
             width: 0%;
             transition: width 2s ease-in-out;
         }
-
-        .menu-buttons button {
-            margin: 10px;
-            padding: 15px 30px;
-            background-color: #8b5e34;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            font-family: 'Papyrus', 'Arial', sans-serif; /* Native-style font */
-            transition: background-color 0.3s;
-        }
-
-        .menu-buttons button:hover {
-            background-color: #623a1d;
-        }
-
-        .menu-buttons {
-            display: flex;
-            flex-direction: column;
-            margin-top: 30px;
-        }
-
-        .settings-menu {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        /* Game interface */
-        .game-interface, .npc-interface, .story-page, .clan-page, .culture-page {
+        /* Game screen */
+        .game-screen {
             display: none;
             justify-content: center;
             align-items: center;
-            background-color: #f4e3c5; /* Light, earthy tone background */
-            color: #2d2d2d; /* Darker text */
-            font-size: 16px;
+            color: black;
+            font-size: 32px;
+            text-align: center;
+            background-color: #ffffff;
             padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #8b5e34; /* Native-style brown borders */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            height: auto;
-            margin: 20px auto;
+            border-radius: 8px;
         }
-
-        .fade-in {
-            animation: fadeIn 3s ease;
+        /* Interaction interface */
+        .game-interface {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: black;
         }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        /* Choice button styles */
         .choice-button {
             padding: 10px 20px;
             margin: 10px;
-            background-color: #8b5e34;
+            background-color: #007bff;
             border: none;
             border-radius: 5px;
             color: white;
             cursor: pointer;
-            font-family: 'Papyrus', 'Arial', sans-serif;
         }
-
         .choice-button:hover {
-            background-color: #623a1d;
+            background-color: #0056b3;
         }
-
-        /* Text styling for headers and paragraphs */
-        h2 {
-            font-family: 'Papyrus', 'Arial', sans-serif;
-            font-size: 24px;
-        }
-
-        p {
-            font-family: 'Papyrus', 'Arial', sans-serif;
-            font-size: 18px;
+        #npcInterface, #storyPage {
+            background-color: #f9f9f9;
+            color: black;
+            padding: 20px;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -189,19 +155,13 @@
     <button class="choice-button" onclick="chooseAction('seek a quest')">Seek a Quest</button>
 </div>
 
-<!-- NPC Interface (where tribe members appear) -->
-<div class="npc-interface" id="npcInterface"></div>
+<!-- NPC Interface -->
+<div class="game-interface" id="npcInterface" style="display:none;"></div>
 
-<!-- Story page -->
-<div class="story-page" id="storyPage"></div>
+<!-- Story Page -->
+<div class="game-interface" id="storyPage" style="display:none;"></div>
 
-<!-- Clan page -->
-<div class="clan-page" id="clanPage"></div>
-
-<!-- Culture page -->
-<div class="culture-page" id="culturePage"></div>
-
-<!-- Using hosted background music -->
+<!-- Using external link for background music -->
 <audio id="bgMusic" loop>
     <source src="https://audio.jukehost.co.uk/N3CuGZj51wOhuQVb43EDFXfesEwaLOdu" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -277,37 +237,30 @@
     }
 
     // Fetch data from JSON file
-    function fetchTribeData() {
-        return fetch('Cherokee_Tribe_Game_Data.json')
-            .then(response => response.json())
-            .catch(error => console.error("There was an issue loading the tribe data:", error));
+    async function fetchTribeData() {
+        try {
+            const response = await fetch('Cherokee_Tribe_Game_Data.json');
+            if (!response.ok) {
+                console.error("Error loading JSON:", response.statusText);
+                return null;
+            }
+            const tribeData = await response.json();
+            console.log("Successfully loaded tribe data:", tribeData); // Added logging
+            return tribeData;
+        } catch (error) {
+            console.error("There was an issue loading the tribe data:", error);
+            return null;
+        }
     }
 
-    async function loadWisdom() {
-        const tribeData = await fetchTribeData();
-        const tribeMembers = tribeData.tribe_members;
-
-        // Pick a random member
-        const randomMember = tribeMembers[Math.floor(Math.random() * tribeMembers.length)];
-        const npcInterface = document.getElementById('npcInterface');
-        npcInterface.innerHTML = `
-            <h2>${randomMember.name}</h2>
-            <p>Role: ${randomMember.role}</p>
-            <p>${randomMember.culture_info}</p>
-            <button class="choice-button" onclick="askForStory('${randomMember.stories[0]}')">Ask to hear a tribal story</button>
-            <button class="choice-button" onclick="goBack()">Go Back</button>
-        `;
-        npcInterface.style.display = 'flex';
-        document.getElementById('gameInterface').style.display = 'none';
-    }
-
+    // Load quests
     async function loadQuest() {
         const tribeData = await fetchTribeData();
-        const quests = tribeData.quests;
-
-        if (quests && quests.length > 0) {
+        if (tribeData && tribeData.quests && tribeData.quests.length > 0) {
             // Pick a random quest
-            const randomQuest = quests[Math.floor(Math.random() * quests.length)];
+            const randomQuest = tribeData.quests[Math.floor(Math.random() * tribeData.quests.length)];
+            console.log("Loaded quest:", randomQuest); // Log the selected quest
+
             const npcInterface = document.getElementById('npcInterface');
             npcInterface.innerHTML = `
                 <h2>Quest: ${randomQuest.title}</h2>
@@ -317,27 +270,36 @@
             npcInterface.style.display = 'flex';
             document.getElementById('gameInterface').style.display = 'none';
         } else {
+            console.error("No quests available:", tribeData ? tribeData.quests : "Tribe data is null");
             alert("No quests available.");
         }
     }
 
-    async function askForStory(story) {
-        const tribeData = await fetchTribeData();
-        const storyContent = tribeData.stories[story];
-        const storyPage = document.getElementById('storyPage');
-        storyPage.innerHTML = `
-            <h2>${story}</h2>
-            <p>${storyContent}</p>
-            <button class="choice-button" onclick="goBack()">Go Back</button>
-        `;
-        storyPage.style.display = 'flex';
-        document.getElementById('npcInterface').style.display = 'none';
-    }
-
+    // Function to go back to the previous screen
     function goBack() {
         document.getElementById('npcInterface').style.display = 'none';
-        document.getElementById('storyPage').style.display = 'none';
         document.getElementById('gameInterface').style.display = 'flex';
+    }
+
+    // Load wisdom (stories, culture, clans)
+    async function loadWisdom() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
+            const story = tribeData.stories[randomMember.stories[0]] || "No story available.";
+            console.log("Loaded wisdom from:", randomMember.name);
+
+            const npcInterface = document.getElementById('npcInterface');
+            npcInterface.innerHTML = `
+                <h2>Wisdom from ${randomMember.name}</h2>
+                <p>${story}</p>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            npcInterface.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        } else {
+            alert("No data available for this selection.");
+        }
     }
 </script>
 
