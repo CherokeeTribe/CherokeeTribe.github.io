@@ -1,0 +1,76 @@
+{
+    "tribe_members": [
+        {
+            "name": "Hokee Shadowwalker",
+            "role": "Wise and strong member",
+            "stories": ["The Origin of Fire"],
+            "culture_info": "Hokee shares knowledge about the ancient Cherokee ceremonies and the importance of the sacred fire.",
+            "clans": "Long Hair Clan"
+        },
+        {
+            "name": "Eden Moore-Greene",
+            "role": "Wise elder",
+            "stories": ["The Eagle's Revenge"],
+            "culture_info": "Eden discusses the balance of life and the importance of Cherokee values like respect, humility, and trust.",
+            "clans": "Blue Clan"
+        },
+        {
+            "name": "Golanv Usdi/Little Raven",
+            "role": "Storyteller",
+            "stories": ["Strangers"],
+            "culture_info": "Golanv tells tales of Cherokee myths and traditions, passed down through generations.",
+            "clans": "Wolf Clan"
+        },
+        {
+            "name": "Atohi Greene",
+            "role": "Hunter",
+            "stories": [],
+            "culture_info": "Atohi shares wisdom on Cherokee hunting practices, particularly focusing on the spiritual connection to the earth.",
+            "clans": "Deer Clan"
+        },
+        {
+            "name": "Enola",
+            "role": "Elder",
+            "stories": ["The Eagles Revenge"],
+            "culture_info": "Enola speaks of the importance of ceremonies and the significance of the sacred fire in the Cherokee Nation.",
+            "clans": "Bird Clan"
+        },
+        {
+            "name": "Annabelle Moore",
+            "role": "Keeper of the tribe’s history",
+            "stories": [],
+            "culture_info": "Annabelle maintains the stories and history of the Cherokee people, preserving the past for future generations.",
+            "clans": "Paint Clan"
+        },
+        {
+            "name": "Waya",
+            "role": "Warrior",
+            "stories": [],
+            "culture_info": "Waya explains the structure of the Cherokee clans and the roles of warriors within the tribe.",
+            "clans": "Wolf Clan"
+        },
+        {
+            "name": "Willow Sage Moon",
+            "role": "Healer",
+            "stories": [],
+            "culture_info": "Willow provides insight into traditional Cherokee medicine, emphasizing the spiritual and herbal healing techniques.",
+            "clans": "Wild Potato Clan"
+        }
+    ],
+    "stories": {
+        "The Origin of Fire": "Long ago, the animals of the earth lived in a time of darkness, as fire was unknown to them. One day, they saw a flicker of light on an island far across the water. It was the first fire, guarded jealously by the Thunders, powerful beings who lived there. The animals gathered to discuss how they could bring the fire to their own land. After much deliberation, it was decided that the only way to acquire it was to send the swiftest among them to retrieve it. First, the Raven volunteered. With his dark wings, he flew across the water to the island. He waited until the Thunders weren't looking, then he swooped down to grab a piece of the fire. But as he grasped it in his beak, the flames singed his feathers, turning them black. He dropped the fire and returned to the animals with nothing but his burnt feathers as proof of his attempt. Next, the Screech Owl tried his luck. He flew silently over the water and approached the fire. But when he tried to pick it up, the sparks flew into his eyes, giving him his fiery red eyes that all screech owls have today. He, too, returned without the fire. The animals were losing hope when the lowly Water Spider stepped forward. The other animals scoffed at her, but she assured them she could do it. She spun a small web and made it into a tiny bowl that she could carry on her back. Then she scurried across the water to the island. The Thunders did not notice the little Water Spider as she approached the fire. She carefully took a single ember and placed it in her web bowl. She then hurried back across the water to the animals on the mainland. The animals rejoiced when they saw the little ember in the Water Spider’s bowl. They used it to create fire, which they have kept ever since. From that day on, the Water Spider was revered for her cleverness and bravery, and the fire has brought warmth and light to the Cherokee people.",
+        "The Eagles Revenge": "Once a hunter in the mountains heard a noise at night like a rushing wind. He went outside his tepee and found an eagle sitting on the drying pole, feasting at the deer he had shot. So, he shot the eagle. The next morning the hunter took the deer back to the village. He told how he had shot the deer and then the eagle. Therefore, the chief sent out men to bring in the eagle, and have an Eagle dance. That night when they were dancing, there was a whoop outside. A strange warrior walked into the circle. He was not of that village. They thought he had come from one of the other Cherokee villages. This warrior told how he had killed a man. At the end of the story, he yelled, “Hi!” One of the men with rattles, who was leading the dance, fell dead. The stranger sang of another deed. At the end he yelled, “Hi!” Another rattler fell dead. The people were frightened. But the stranger sang of another great deed. Then again, he yelled, “Hi!” Again, a man with the rattles fell dead. So, all seven men who had rattles and who were leading the dance fell dead. And the people were too frightened to leave the lodge where they were dancing. Then the stranger vanished into the darkness. Long after, they learned that the stranger was the brother of the eagle that had been killed.",
+        "Strangers": "Up on a ridge, a rough eminence about a dozen miles from Tennessee, was once an abiding place of Cherokee. Among them lived Arinook, their medicine-man, and his daughter. The girl was pure and fair, and when a passing hunter from another tribe saw her one day at the door of her father’s home, he was so struck with her charm of person and her engaging manner that he resolved not to return to his people until he had won her for his wife. She had many lovers, though she favored none of them. While the Cherokees were at first loth to admit a stranger to their homes, they forgot their jealousy when they found that this one excelled as a hunter and fisherman. He could throw the knife and tomahawk better than themselves, and was apt in their work and their sports. Eventually, they submitted to the inevitable with grace when they found that the stranger and the girl were in love."
+    },
+    "clans": {
+        "Long Hair Clan": "The Long Hair Clan's subdivisions are Twister, Wind, and Strangers. This clan is known to be peaceful and the Peace Chief often comes from this clan.",
+        "Blue Clan": "The Blue Clan's subdivisions are Panther or Wildcat and Bear. This clan is known for producing people who can make special medicines for children.",
+        "Wolf Clan": "The Wolf Clan has been known throughout time to be the largest clan. During the time of the Peace Chief and War Chief government, the War Chief would come from this clan.",
+        "Wild Potato Clan": "Members of this clan were known to be 'keepers of the land' and gatherers. The wild potato was a staple of the traditional Cherokee diet."
+    },
+    "culture": {
+        "Cherokee Society": "Cherokee society is historically matrilineal. Women were considered the head of the household, and clanship was passed through the mother.",
+        "Homes": "The Cherokee Natives lived in villages. They built circular homes made of river cane, sticks, and plaster. They covered the roofs with thatch and left a small hole in the center to let the smoke out.",
+        "Cherokee Values": "Cherokee Nation values balance, harmony, cooperation, and respect within the community. They believed in taking only what was needed from nature and maintaining the balance of the world."
+    }
+}
