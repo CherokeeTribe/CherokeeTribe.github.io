@@ -19,7 +19,7 @@
             color: #fff;
             overflow: hidden;
         }
-
+		
         /* Native style theming */
         .native-text {
             font-family: 'Atma', sans-serif;
@@ -27,7 +27,7 @@
             color: #ffebcd; /* Light beige/gold */
             letter-spacing: 1px;
         }
-
+		
         .home-screen {
             position: absolute;
             width: 100%;
@@ -59,6 +59,22 @@
             font-family: 'Atma', sans-serif; /* Applying Native-themed font */
         }
 
+        .loading-bar {
+            width: 60%;
+            height: 15px;
+            background-color: #333;
+            border-radius: 10px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .loading-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+
         .menu-buttons button {
             margin: 10px;
             padding: 15px 30px;
@@ -76,6 +92,22 @@
             background-color: #a0522d;
         }
 
+        .menu-buttons {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+        }
+
+        .settings-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
         /* Game screen */
         .game-screen {
             display: none;
@@ -84,6 +116,15 @@
             color: white;
             font-size: 32px;
             text-align: center;
+        }
+
+        .fade-in {
+            animation: fadeIn 3s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         /* Interaction interface */
@@ -109,6 +150,26 @@
         .choice-button:hover {
             background-color: #a0522d;
         }
+
+        .story-page, .npc-interface, .quest-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Ensure new background for sections */
+        .page-background {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            color: #333;
+        }
+
+        h2 {
+            font-family: 'Arial', sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -118,10 +179,22 @@
 <div class="overlay fade-in">
     <div class="game-title">Echoes of the Cherokee Nation</div>
 
+    <div class="loading-bar">
+        <div class="loading-fill" id="loadingFill"></div>
+    </div>
+
     <div class="menu-buttons">
-        <button onclick="startGame()">Start Game</button>
+        <button onclick="startGame()">Travel to the Tribal Grounds</button>
         <button onclick="toggleSettings()">Settings</button>
         <button onclick="showCredits()">Credits</button>
+    </div>
+
+    <div class="settings-menu" id="settingsMenu">
+        <h2>Settings</h2>
+        <label>
+            <input type="checkbox" id="musicToggle" checked onchange="toggleMusic()"> Background Music
+        </label>
+        <button onclick="closeSettings()">Close</button>
     </div>
 </div>
 
@@ -141,13 +214,32 @@
     <button class="choice-button" onclick="chooseAction('ask for a story')">Ask for a Story</button>
 </div>
 
-<!-- Audio -->
+<div class="npc-interface page-background" id="npcInterface"></div>
+
+<div class="story-page page-background" id="storyPage"></div>
+
+<div class="quest-page page-background" id="questPage"></div>
+
+<!-- Using local file path for background music -->
 <audio id="bgMusic" loop>
-    <source src="https://audio.jukehost.co.uk/N3CuGZj51wOhuQVb43EDFXfesEwaLOdu" type="audio/mpeg">
+    <source src="hymn.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
 <script>
+    // Loading bar effect
+    function fillLoadingBar() {
+        const loadingFill = document.getElementById('loadingFill');
+        loadingFill.style.width = '100%';
+    }
+
+    window.onload = function() {
+        setTimeout(fillLoadingBar, 1000);
+        document.querySelector(".menu-buttons button").addEventListener("click", () => {
+            playMusic();
+        });
+    };
+
     // Function to play background music
     function playMusic() {
         const bgMusic = document.getElementById('bgMusic');
@@ -158,32 +250,124 @@
 
     // Button functions
     function startGame() {
+        // Hide the home screen and show the game screen
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.home-screen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'flex';
-        playMusic();
-    }
-
-    function toggleSettings() {
-        alert('Settings are currently under development.');
     }
 
     function showCredits() {
-        alert('Developed by the tribe members.');
+        alert('Showing credits...');
     }
 
-    function startQuest() {
+    function toggleSettings() {
+        const settingsMenu = document.getElementById('settingsMenu');
+        settingsMenu.style.display = settingsMenu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function closeSettings() {
+        document.getElementById('settingsMenu').style.display = 'none';
+    }
+
+    // Toggle music
+    function toggleMusic() {
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        if (musicToggle.checked) {
+            bgMusic.play();
+        } else {
+            bgMusic.pause();
+        }
+    }
+
+    // Go to tribal grounds
+    function beginJourney() {
         document.getElementById('gameScreen').style.display = 'none';
         document.getElementById('gameInterface').style.display = 'flex';
     }
 
-    function chooseAction(action) {
-        if (action === 'ask for wisdom') {
-            alert("You asked for wisdom...");
-        } else if (action === 'seek a quest') {
-            alert("You chose to seek a quest.");
-        } else if (action === 'ask for a story') {
-            alert("You asked for a tribal story...");
+    // Fetch tribe data from JSON
+    async function fetchTribeData() {
+        try {
+            const response = await fetch('Cherokee_Tribe_Game_Data.json');
+            const tribeData = await response.json();
+            return tribeData;
+        } catch (error) {
+            alert('There was an issue loading the tribe data: ' + error);
+        }
+    }
+
+    // Load wisdom (random stories, culture, clans)
+    async function loadWisdom() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
+            const randomCultureKey = Object.keys(tribeData.culture)[Math.floor(Math.random() * Object.keys(tribeData.culture).length)];
+            const randomClanKey = Object.keys(tribeData.clans)[Math.floor(Math.random() * Object.keys(tribeData.clans).length)];
+            const cultureInfo = tribeData.culture[randomCultureKey];
+            const clanInfo = tribeData.clans[randomClanKey];
+
+            const npcInterface = document.getElementById('npcInterface');
+            npcInterface.innerHTML = `
+                <h2>Wisdom from ${randomMember.name}</h2>
+                <p><strong>Culture Insight:</strong> ${cultureInfo}</p>
+                <p><strong>Clan Information:</strong> ${clanInfo}</p>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            npcInterface.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        }
+    }
+
+    // Load a random story
+    async function loadStory() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const randomStoryKey = Object.keys(tribeData.stories)[Math.floor(Math.random() * Object.keys(tribeData.stories).length)];
+            const randomStory = tribeData.stories[randomStoryKey];
+            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
+
+            const storyPage = document.getElementById('storyPage');
+            storyPage.innerHTML = `
+                <h2>A Story from ${randomMember.name}</h2>
+                <p>${randomStory}</p>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            storyPage.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        }
+    }
+
+    // Go back to main interface
+    function goBack() {
+        document.getElementById('npcInterface').style.display = 'none';
+        document.getElementById('storyPage').style.display = 'none';
+        document.getElementById('questPage').style.display = 'none';
+        document.getElementById('gameInterface').style.display = 'flex';
+    }
+
+    // Load quests
+    async function loadQuest() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const gatherables = tribeData.gatherables;
+            const randomObject = gatherables.objects[Math.floor(Math.random() * gatherables.objects.length)];
+            const randomPlant = gatherables.plants[Math.floor(Math.random() * gatherables.plants.length)];
+            const randomOther = gatherables.others[Math.floor(Math.random() * gatherables.others.length)];
+
+            const questPage = document.getElementById('questPage');
+            questPage.innerHTML = `
+                <h2>Quest: Help the Tribe</h2>
+                <p>Your task is to gather the following:</p>
+                <ul>
+                    <li>${randomObject}</li>
+                    <li>${randomPlant}</li>
+                    <li>${randomOther}</li>
+                </ul>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            questPage.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
         }
     }
 </script>
