@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -13,10 +12,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Roboto Slab', serif;
+            font-family: 'Arial', sans-serif;
             background-color: #000;
             overflow: hidden;
-            color: white;
+            color: white; /* Ensure all text is visible */
         }
 
         .home-screen {
@@ -47,7 +46,6 @@
             font-size: 48px;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            font-family: 'Roboto Slab', serif;
         }
 
         .loading-bar {
@@ -75,7 +73,6 @@
             color: white;
             font-size: 20px;
             cursor: pointer;
-            font-family: 'Roboto Slab', serif;
             transition: background-color 0.3s;
         }
 
@@ -134,7 +131,6 @@
             border: none;
             border-radius: 5px;
             color: white;
-            font-family: 'Roboto Slab', serif;
             cursor: pointer;
         }
 
@@ -159,56 +155,7 @@
         }
 
         h2 {
-            font-family: 'Roboto Slab', serif;
-        }
-
-        /* Story Page Styling */
-        #storyPage {
-            background-image: url('https://source.unsplash.com/featured/?parchment,texture');
-            background-size: cover;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 1000px; /* Widened */
-            max-height: 75vh;
-            color: #2c2c2c;
-            font-family: 'Roboto Slab', serif;
-            text-align: left;
-            line-height: 1.8;
-            font-size: 20px;
-            overflow-y: auto;
-        }
-
-        #storyPage h2 {
-            color: #4b2808;
-            text-align: left;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        #storyPage h3 {
-            color: #4b2808;
-            text-align: left;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        #storyPage p {
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        /* Style for scrollbars */
-        #storyPage::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        #storyPage::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        #storyPage::-webkit-scrollbar-thumb {
-            background-color: #4b2808;
-            border-radius: 10px;
+            font-family: 'Arial', sans-serif;
         }
     </style>
 </head>
@@ -260,7 +207,7 @@
 
 <div class="quest-page page-background" id="questPage"></div>
 
-<!-- Background music -->
+<!-- Using local file path for background music -->
 <audio id="bgMusic" loop>
     <source src="hymn.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -290,6 +237,7 @@
 
     // Button functions
     function startGame() {
+        // Hide the home screen and show the game screen
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.home-screen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'flex';
@@ -367,21 +315,14 @@
             const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
 
             const storyPage = document.getElementById('storyPage');
-            storyPage.scrollTop = 0; // Ensure the story is scrolled to the top
             storyPage.innerHTML = `
-                <h2>Title: ${randomStoryKey}</h2>
-                <h3>Storyteller: ${randomMember.name}</h3>
-                <p>${formatStoryText(randomStory)}</p>
+                <h2>A Story from ${randomMember.name}</h2>
+                <p>${randomStory}</p>
                 <button class="choice-button" onclick="goBack()">Go Back</button>
             `;
             storyPage.style.display = 'flex';
             document.getElementById('gameInterface').style.display = 'none';
         }
-    }
-
-    // Helper function to format text into paragraphs
-    function formatStoryText(story) {
-        return story.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('');
     }
 
     // Go back to main interface
