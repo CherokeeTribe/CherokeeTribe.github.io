@@ -15,7 +15,7 @@
             font-family: 'Arial', sans-serif;
             background-color: #000;
             overflow: hidden;
-            color: white; /* Ensure all text is visible */
+            color: white;
         }
 
         .home-screen {
@@ -146,17 +146,38 @@
             color: white;
         }
 
-        /* Ensure new background for sections */
-        .page-background {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
+        /* Background for story page to mimic a book page */
+        .story-page {
+            background-color: #fef5e7;
+            border: 2px solid #e0c8a8;
+            padding: 40px;
+            width: 80%;
+            height: 80%;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
             color: #333;
+            text-align: left;
         }
 
-        h2 {
-            font-family: 'Arial', sans-serif;
+        /* Title and storyteller */
+        .story-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-align: center;
         }
+
+        .story-teller {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .story-content {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
     </style>
 </head>
 <body>
@@ -185,13 +206,6 @@
     </div>
 </div>
 
-<!-- Game screen that will be displayed after start -->
-<div class="game-screen" id="gameScreen">
-    <h1>Welcome to the World of the Cherokee Nation!</h1>
-    <p>The adventure begins...</p>
-    <button class="choice-button" onclick="beginJourney()">Begin Your Journey</button>
-</div>
-
 <!-- Interaction interface -->
 <div class="game-interface" id="gameInterface">
     <h2>You meet the tribe elders...</h2>
@@ -201,11 +215,11 @@
     <button class="choice-button" onclick="loadStory()">Ask for a Story</button>
 </div>
 
-<div class="npc-interface page-background" id="npcInterface"></div>
+<div class="npc-interface" id="npcInterface"></div>
 
-<div class="story-page page-background" id="storyPage"></div>
+<div class="story-page" id="storyPage"></div>
 
-<div class="quest-page page-background" id="questPage"></div>
+<div class="quest-page" id="questPage"></div>
 
 <!-- Using local file path for background music -->
 <audio id="bgMusic" loop>
@@ -284,28 +298,6 @@
         }
     }
 
-    // Load wisdom (random stories, culture, clans)
-    async function loadWisdom() {
-        const tribeData = await fetchTribeData();
-        if (tribeData) {
-            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
-            const randomCultureKey = Object.keys(tribeData.culture)[Math.floor(Math.random() * Object.keys(tribeData.culture).length)];
-            const randomClanKey = Object.keys(tribeData.clans)[Math.floor(Math.random() * Object.keys(tribeData.clans).length)];
-            const cultureInfo = tribeData.culture[randomCultureKey];
-            const clanInfo = tribeData.clans[randomClanKey];
-
-            const npcInterface = document.getElementById('npcInterface');
-            npcInterface.innerHTML = `
-                <h2>Wisdom from ${randomMember.name}</h2>
-                <p><strong>Culture Insight:</strong> ${cultureInfo}</p>
-                <p><strong>Clan Information:</strong> ${clanInfo}</p>
-                <button class="choice-button" onclick="goBack()">Go Back</button>
-            `;
-            npcInterface.style.display = 'flex';
-            document.getElementById('gameInterface').style.display = 'none';
-        }
-    }
-
     // Load a random story
     async function loadStory() {
         const tribeData = await fetchTribeData();
@@ -315,9 +307,11 @@
             const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
 
             const storyPage = document.getElementById('storyPage');
+            storyPage.scrollTop = 0; // Ensure the story is scrolled to the top
             storyPage.innerHTML = `
-                <h2>A Story from ${randomMember.name}</h2>
-                <p>${randomStory}</p>
+                <div class="story-title">${randomStoryKey}</div>
+                <div class="story-teller">Storyteller: ${randomMember.name}</div>
+                <div class="story-content">${randomStory}</div>
                 <button class="choice-button" onclick="goBack()">Go Back</button>
             `;
             storyPage.style.display = 'flex';
