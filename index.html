@@ -169,11 +169,13 @@
             padding: 40px;
             border-radius: 15px;
             max-width: 800px;
+            max-height: 70vh;
             color: #2c2c2c;
             font-family: 'Roboto Slab', serif;
             text-align: left;
             line-height: 1.8;
             font-size: 18px;
+            overflow-y: auto;
         }
 
         #storyPage h2, #storyPage h3 {
@@ -183,6 +185,20 @@
 
         #storyPage p {
             margin-bottom: 15px;
+        }
+
+        /* Style for scrollbars */
+        #storyPage::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        #storyPage::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        #storyPage::-webkit-scrollbar-thumb {
+            background-color: #4b2808;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -221,7 +237,7 @@
 
 <!-- Interaction interface -->
 <div class="game-interface" id="gameInterface">
-    <h2>You meet the tribe elders...</h2>
+    <h2>You meet the members of the tribe...</h2>
     <p>What will you do?</p>
     <button class="choice-button" onclick="loadWisdom()">Ask for Wisdom</button>
     <button class="choice-button" onclick="loadQuest()">Seek a Quest</button>
