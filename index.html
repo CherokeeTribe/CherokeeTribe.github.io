@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echoes of the Cherokee Nation</title>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -12,7 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Noto Serif', serif;
             background-color: #000;
             overflow: hidden;
             color: white;
@@ -33,7 +34,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -43,9 +44,11 @@
         }
 
         .game-title {
-            font-size: 48px;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            font-family: 'IM Fell English', serif;
+            font-size: 56px;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
         .loading-bar {
@@ -53,7 +56,7 @@
             height: 15px;
             background-color: #333;
             border-radius: 10px;
-            margin-top: 10px;
+            margin-top: 20px;
             overflow: hidden;
         }
 
@@ -66,18 +69,19 @@
 
         .menu-buttons button {
             margin: 10px;
-            padding: 15px 30px;
-            background-color: #007bff;
+            padding: 15px 40px;
+            background-color: #8B4513;
             border: none;
             border-radius: 8px;
             color: white;
-            font-size: 20px;
+            font-size: 22px;
+            font-family: 'Noto Serif', serif;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
         .menu-buttons button:hover {
-            background-color: #0056b3;
+            background-color: #A0522D;
         }
 
         .menu-buttons {
@@ -91,9 +95,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 30px;
             border-radius: 15px;
+            color: #fff;
+            font-family: 'Noto Serif', serif;
         }
 
         /* Game screen */
@@ -102,7 +108,7 @@
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 32px;
+            font-size: 36px;
             text-align: center;
         }
 
@@ -115,17 +121,19 @@
         }
 
         .choice-button {
-            padding: 10px 20px;
+            padding: 12px 24px;
             margin: 10px;
-            background-color: #007bff;
+            background-color: #6A5ACD;
             border: none;
             border-radius: 5px;
             color: white;
+            font-family: 'Noto Serif', serif;
+            font-size: 20px;
             cursor: pointer;
         }
 
         .choice-button:hover {
-            background-color: #0056b3;
+            background-color: #483D8B;
         }
 
         .story-page {
@@ -139,11 +147,13 @@
             overflow-y: auto;
             color: #333;
             text-align: left;
+            font-family: 'Noto Serif', serif;
         }
 
         .story-title {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 40px;
+            font-family: 'IM Fell English', serif;
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -156,7 +166,7 @@
 
         .story-content {
             font-size: 22px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
     </style>
