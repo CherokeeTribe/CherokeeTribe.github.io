@@ -15,7 +15,7 @@
             font-family: 'Arial', sans-serif;
             background-color: #000;
             overflow: hidden;
-            color: white;
+            color: white; /* Ensure all text is visible */
         }
 
         .home-screen {
@@ -106,7 +106,16 @@
             text-align: center;
         }
 
-        /* Fix for tribal grounds display */
+        .fade-in {
+            animation: fadeIn 3s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Interaction interface */
         .game-interface {
             display: none;
             flex-direction: column;
@@ -129,44 +138,32 @@
             background-color: #0056b3;
         }
 
-        .story-page {
+        .story-page, .npc-interface, .quest-page {
             display: none;
-            background-color: #fef5e7;
-            border: 2px solid #e0c8a8;
-            padding: 40px;
-            width: 80%;
-            height: 80%;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-            overflow-y: auto;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Ensure new background for sections */
+        .page-background {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
             color: #333;
-            text-align: left;
         }
 
-        .story-title {
-            font-size: 36px;
-            margin-bottom: 10px;
-            text-align: center;
+        h2 {
+            font-family: 'Arial', sans-serif;
         }
-
-        .story-teller {
-            font-size: 18px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .story-content {
-            font-size: 22px;
-            line-height: 1.6;
-        }
-
     </style>
 </head>
 <body>
 
 <div class="home-screen"></div>
 
-<div class="overlay">
+<div class="overlay fade-in">
     <div class="game-title">Echoes of the Cherokee Nation</div>
 
     <div class="loading-bar">
@@ -204,11 +201,11 @@
     <button class="choice-button" onclick="loadStory()">Ask for a Story</button>
 </div>
 
-<div class="npc-interface" id="npcInterface"></div>
+<div class="npc-interface page-background" id="npcInterface"></div>
 
-<div class="story-page" id="storyPage"></div>
+<div class="story-page page-background" id="storyPage"></div>
 
-<div class="quest-page" id="questPage"></div>
+<div class="quest-page page-background" id="questPage"></div>
 
 <!-- Using local file path for background music -->
 <audio id="bgMusic" loop>
@@ -273,7 +270,7 @@
     // Go to tribal grounds
     function beginJourney() {
         document.getElementById('gameScreen').style.display = 'none';
-        document.getElementById('gameInterface').style.display = 'flex'; // Fixes black screen issue
+        document.getElementById('gameInterface').style.display = 'flex';
     }
 
     // Fetch tribe data from JSON
@@ -287,6 +284,28 @@
         }
     }
 
+    // Load wisdom (random stories, culture, clans)
+    async function loadWisdom() {
+        const tribeData = await fetchTribeData();
+        if (tribeData) {
+            const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
+            const randomCultureKey = Object.keys(tribeData.culture)[Math.floor(Math.random() * Object.keys(tribeData.culture).length)];
+            const randomClanKey = Object.keys(tribeData.clans)[Math.floor(Math.random() * Object.keys(tribeData.clans).length)];
+            const cultureInfo = tribeData.culture[randomCultureKey];
+            const clanInfo = tribeData.clans[randomClanKey];
+
+            const npcInterface = document.getElementById('npcInterface');
+            npcInterface.innerHTML = `
+                <h2>Wisdom from ${randomMember.name}</h2>
+                <p><strong>Culture Insight:</strong> ${cultureInfo}</p>
+                <p><strong>Clan Information:</strong> ${clanInfo}</p>
+                <button class="choice-button" onclick="goBack()">Go Back</button>
+            `;
+            npcInterface.style.display = 'flex';
+            document.getElementById('gameInterface').style.display = 'none';
+        }
+    }
+
     // Load a random story
     async function loadStory() {
         const tribeData = await fetchTribeData();
@@ -296,11 +315,9 @@
             const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
 
             const storyPage = document.getElementById('storyPage');
-            storyPage.scrollTop = 0; // Ensure the story is scrolled to the top
             storyPage.innerHTML = `
-                <div class="story-title">${randomStoryKey}</div>
-                <div class="story-teller">Storyteller: ${randomMember.name}</div>
-                <div class="story-content">${randomStory}</div>
+                <h2>A Story from ${randomMember.name}</h2>
+                <p>${randomStory}</p>
                 <button class="choice-button" onclick="goBack()">Go Back</button>
             `;
             storyPage.style.display = 'flex';
