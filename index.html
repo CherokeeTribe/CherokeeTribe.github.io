@@ -269,7 +269,7 @@
         <li>Flaxfiber</li>
         <li>Cotton (farmed item)</li>
     </ul>
-    <button class="choice-button" onclick="goBack()">Go Back</button> <!-- No stray characters here -->
+    <button class="choice-button" onclick="goBack()">Go Back</button>
 </div>
 
 <!-- Using local file path for background music -->
@@ -335,8 +335,9 @@
 
     // Go to tribal grounds
     function beginJourney() {
+        // Hide the home screen and show the main game interface
         document.getElementById('gameScreen').style.display = 'none';
-        document.getElementById('gameInterface').style.display = 'flex'; // Fixes black screen issue
+        document.getElementById('gameInterface').style.display = 'flex'; // Show the game interface
         hideAllPages(); // Hide other pages like story-page
     }
 
