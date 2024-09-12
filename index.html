@@ -138,7 +138,7 @@
 
         /* Story page */
         .story-page {
-            display: none;
+            display: none; /* Hidden by default */
             background-color: #fef5e7;
             border: 2px solid #e0c8a8;
             padding: 40px;
@@ -297,6 +297,7 @@
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.home-screen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'flex';
+        hideAllPages(); // Hide other pages like story-page
     }
 
     function showCredits() {
@@ -327,6 +328,14 @@
     function beginJourney() {
         document.getElementById('gameScreen').style.display = 'none';
         document.getElementById('gameInterface').style.display = 'flex'; // Fixes black screen issue
+        hideAllPages(); // Hide other pages like story-page
+    }
+
+    // Hide all pages except the main ones
+    function hideAllPages() {
+        document.getElementById('storyPage').style.display = 'none';
+        document.getElementById('npcInterface').style.display = 'none';
+        document.getElementById('questPage').style.display = 'none';
     }
 
     // Fetch tribe data from JSON
@@ -359,6 +368,7 @@
             `;
             npcInterface.style.display = 'flex';
             document.getElementById('gameInterface').style.display = 'none';
+            hideAllPages(); // Hide other pages like story-page
         }
     }
 
@@ -380,6 +390,7 @@
             `;
             storyPage.style.display = 'flex';
             document.getElementById('gameInterface').style.display = 'none';
+            hideAllPages(); // Hide other pages like quest-page
         }
     }
 
@@ -413,6 +424,7 @@
             `;
             questPage.style.display = 'flex';
             document.getElementById('gameInterface').style.display = 'none';
+            hideAllPages(); // Hide other pages like story-page
         }
     }
 </script>
