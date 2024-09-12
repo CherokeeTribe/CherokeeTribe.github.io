@@ -367,6 +367,7 @@
             const randomMember = tribeData.tribe_members[Math.floor(Math.random() * tribeData.tribe_members.length)];
 
             const storyPage = document.getElementById('storyPage');
+            storyPage.scrollTop = 0; // Ensure the story is scrolled to the top
             storyPage.innerHTML = `
                 <h2>Title: ${randomStoryKey}</h2>
                 <h3>Storyteller: ${randomMember.name}</h3>
