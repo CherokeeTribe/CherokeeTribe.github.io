@@ -106,16 +106,7 @@
             text-align: center;
         }
 
-        .fade-in {
-            animation: fadeIn 3s ease;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        /* Interaction interface */
+        /* Fix for tribal grounds display */
         .game-interface {
             display: none;
             flex-direction: column;
@@ -138,16 +129,8 @@
             background-color: #0056b3;
         }
 
-        .story-page, .npc-interface, .quest-page {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        /* Background for story page to mimic a book page */
         .story-page {
+            display: none;
             background-color: #fef5e7;
             border: 2px solid #e0c8a8;
             padding: 40px;
@@ -159,7 +142,6 @@
             text-align: left;
         }
 
-        /* Title and storyteller */
         .story-title {
             font-size: 36px;
             margin-bottom: 10px;
@@ -184,7 +166,7 @@
 
 <div class="home-screen"></div>
 
-<div class="overlay fade-in">
+<div class="overlay">
     <div class="game-title">Echoes of the Cherokee Nation</div>
 
     <div class="loading-bar">
@@ -204,6 +186,13 @@
         </label>
         <button onclick="closeSettings()">Close</button>
     </div>
+</div>
+
+<!-- Game screen that will be displayed after start -->
+<div class="game-screen" id="gameScreen">
+    <h1>Welcome to the World of the Cherokee Nation!</h1>
+    <p>The adventure begins...</p>
+    <button class="choice-button" onclick="beginJourney()">Begin Your Journey</button>
 </div>
 
 <!-- Interaction interface -->
@@ -284,7 +273,7 @@
     // Go to tribal grounds
     function beginJourney() {
         document.getElementById('gameScreen').style.display = 'none';
-        document.getElementById('gameInterface').style.display = 'flex';
+        document.getElementById('gameInterface').style.display = 'flex'; // Fixes black screen issue
     }
 
     // Fetch tribe data from JSON
